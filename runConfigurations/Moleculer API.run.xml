@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Moleculer API" type="NodeJSConfigurationType" application-parameters="--hot --repl --config moleculer.config.js services/**/*.service.js" path-to-js-file="node_modules/moleculer/bin/moleculer-runner.js" working-dir="$PROJECT_DIR$/api">
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+      <browser name="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" start="true" with-js-debugger="true" url="http://localhost:3001" />
+    </EXTENSION>
+    <method v="2" />
+  </configuration>
+</component>

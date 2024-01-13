@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "6b0c45f2-f77f-469e-b5a4-d035b2a931eb",
+		"name": "moleculer-example-1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5823520"
+	},
+	"item": [
+		{
+			"name": "Multiply",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 18\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(pm.response.json()).eq(18);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"a\": 9,\r\n    \"b\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/math/multiply",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"math",
+						"multiply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Multiply Validation Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return ValidationError\", function() {\r",
+							"    pm.response.to.have.status(422);\r",
+							"    const body = pm.response.json();\r",
+							"    pm.expect(body.name).eq(\"ValidationError\");\r",
+							"    pm.expect(body.type).eq(\"VALIDATION_ERROR\");\r",
+							"    pm.expect(body.data[0].message).eq( \"The 'a' field must be a number.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"a\": \"99\",\r\n    \"b\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/math/multiply",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"math",
+						"multiply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Multiply Overflow Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return OverflowError\", function() {\r",
+							"    pm.response.to.have.status(500);\r",
+							"    const body = pm.response.json();\r",
+							"    pm.expect(body.name).eq(\"OverflowError\");\r",
+							"    pm.expect(body.type).eq(\"OVERFLOW_ERROR\");\r",
+							"    pm.expect(body.data.requestID).string;\r",
+							"    pm.expect(body.data.res).eq(98901);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"a\": 999,\r\n    \"b\": 99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/math/multiply",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"math",
+						"multiply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 11\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(pm.response.json()).eq(11);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"a\": 9,\r\n    \"b\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/math/add",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"math",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Validation Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return ValidationError\", function() {\r",
+							"    pm.response.to.have.status(422);\r",
+							"    const body = pm.response.json();\r",
+							"    pm.expect(body.name).eq(\"ValidationError\");\r",
+							"    pm.expect(body.type).eq(\"VALIDATION_ERROR\");\r",
+							"    pm.expect(body.data[0].message).eq(\"The 'a' field must be a number.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"a\": \"9\",\r\n    \"b\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/math/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"math",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
